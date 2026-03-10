@@ -1,0 +1,66 @@
+<!DOCTYPE html>    <html lang="en">    
+<head>    
+<meta charset="UTF-8">    
+<title>RAI's Birthday Countdown</title>    
+<style>    
+body{    
+    margin:0;    
+    font-family:Arial, sans-serif;    
+    height:100vh;    
+    display:flex;    
+    justify-content:center;    
+    align-items:center;    
+    background:linear-gradient(135deg,#ff4e50,#f9d423);    
+    color:white;    
+    text-align:center;    
+}    .card{
+background:rgba(0,0,0,0.5);
+padding:40px;
+border-radius:20px;
+box-shadow:0 0 30px rgba(0,0,0,0.4);
+animation:float 3s ease-in-out infinite;
+}
+
+h1{
+font-size:40px;
+}
+
+#countdown{
+font-size:30px;
+margin-top:20px;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0);}
+}
+</style>
+
+</head>    <body>    <div class="card">    
+<h1>🎂 Birthday Countdown for RAI 🎂</h1>    
+<p>Waiting for the special day...</p>    
+<div id="countdown"></div>    
+</div>    <script>    
+const birthday = new Date("April 27, 2026 00:00:00").getTime();    
+    
+const timer = setInterval(function(){    
+    
+let now = new Date().getTime();    
+let distance = birthday - now;    
+    
+let days = Math.floor(distance / (1000*60*60*24));    
+let hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));    
+let minutes = Math.floor((distance % (1000*60*60))/(1000*60));    
+let seconds = Math.floor((distance % (1000*60))/1000);    
+    
+document.getElementById("countdown").innerHTML =    
+days + " Days " + hours + " Hours " + minutes + " Minutes " + seconds + " Seconds";    
+    
+if(distance < 0){    
+clearInterval(timer);    
+document.getElementById("countdown").innerHTML = "🎉 HAPPY BIRTHDAY RAI 🎉";    
+}    
+    
+},1000);    
+</script>    </body>    
